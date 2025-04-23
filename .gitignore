@@ -1,0 +1,23 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environment
+.env
+.venv
+env/
+venv/
+
+# OS or IDE files
+.DS_Store
+*.swp
+
+# Data files
+data.json
+
+# Jupyter/IPython
+.ipynb_checkpoints
+
+# VSCode
+.vscode/
