@@ -1,0 +1,44 @@
+[
+    {
+        "amount": 1000.0,
+        "category": "Salary",
+        "trans_type": "income",
+        "date": "2025-03-05"
+    },
+    {
+        "amount": 200.0,
+        "category": "Food",
+        "trans_type": "expense",
+        "date": "2025-03-06"
+    },
+    {
+        "amount": 50.0,
+        "category": "Transport",
+        "trans_type": "expense",
+        "date": "2025-03-10"
+    },
+    {
+        "amount": 1200.0,
+        "category": "Salary",
+        "trans_type": "income",
+        "date": "2025-04-05"
+    },
+    {
+        "amount": 300.0,
+        "category": "Food",
+        "trans_type": "expense",
+        "date": "2025-04-06"
+    },
+    {
+        "amount": 80.0,
+        "category": "Transport",
+        "trans_type": "expense",
+        "date": "2025-04-08"
+    },
+    {
+        "amount": 150.0,
+        "category": "Entertainment",
+        "trans_type": "expense",
+        "date": "2025-04-10"
+    }
+]
