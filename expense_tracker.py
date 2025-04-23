@@ -101,42 +101,51 @@ if __name__ == "__main__":
     user = User("John Doe", "john@example.com")
     user.load_from_file()
 
+    print("👋 Welcome to your Personal Expense Tracker!")
+    
     while True:
-        print("\n1. Add Income")
-        print("2. Add Expense")
-        print("3. Show Summary")
-        print("4. Show Expense Chart")
-        print("5. Monthly Advice")
-        print("6. Save & Exit")
+        print("\n🔘 What would you like to do?")
+        print("1️⃣  Add Income")
+        print("2️⃣  Add Expense")
+        print("3️⃣  Show Summary")
+        print("4️⃣  Show Expense Chart")
+        print("5️⃣  Get Monthly Advice")
+        print("6️⃣  Save & Exit")
 
-        choice = input("Choose an option: ")
+        choice = input("👉 Enter your choice (1-6): ").strip()
 
-        if choice == '1' or choice == '2':
-            try:
-                amount = float(input("Enter amount: "))
-            except ValueError:
-                print("Invalid amount. Try again.")
-                continue
-            category = input("Enter category: ")
+        if choice in ['1', '2']:
             trans_type = 'income' if choice == '1' else 'expense'
-            user.add_transaction(amount, category, trans_type)
+            print(f"\n💸 Adding a new {trans_type.capitalize()}...")
+
+            try:
+                amount = float(input("➡️  Enter amount: "))
+                category = input("➡️  Enter category (e.g., Food, Rent, Transport): ").strip()
+                user.add_transaction(amount, category, trans_type)
+                print(f"✅ {trans_type.capitalize()} of ${amount:.2f} added under '{category.title()}'.")
+            except ValueError:
+                print("❌ Invalid amount. Please enter a number.")
 
         elif choice == '3':
+            print("\n📊 Generating summary...")
             user.show_summary()
 
         elif choice == '4':
+            print("\n🧁 Preparing your expense breakdown chart...")
             user.plot_expense_breakdown()
 
         elif choice == '5':
+            print("\n📅 Analyzing monthly spending patterns...")
             user.generate_monthly_advice()
 
         elif choice == '6':
             user.save_to_file()
-            print("Data saved. Goodbye!")
+            print("\n💾 All data saved successfully.")
+            print("👋 Goodbye and keep tracking your expenses smartly!")
             break
 
         else:
-            print("Invalid choice. Try again.")
+            print("❌ Invalid choice. Please enter a number from 1 to 6.")
 
 
-            
+
