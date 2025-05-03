@@ -124,7 +124,57 @@ class User:
                 print(f"✅ Budget limit of ${limit:.2f} set for {category.title()}.")
             except ValueError:
                 print("❌ Invalid amount. Please enter a number.")
+class FinanceManager:
+    def __init__(self, user):
+        self.user = user
 
+    def main_menu(self):
+        print("👋 Welcome to your Personal Expense Tracker!")
+        self.user.load_from_file()
+        while True:
+            print("\n🔘 What would you like to do?")
+            print("1️⃣  Add Income")
+            print("2️⃣  Add Expense")
+            print("3️⃣  Show Summary")
+            print("4️⃣  Show Expense Chart")
+            print("5️⃣  Get Monthly Advice")
+            print("6️⃣  Set Budget Limits")
+            print("7️⃣  Search Transactions")
+            print("8️⃣  Save & Exit")
+            choice = input("👉 Enter your choice (1-8): ").strip()
+
+            if choice == '1':
+                self.add_transaction('income')
+            elif choice == '2':
+                self.add_transaction('expense')
+            elif choice == '3':
+                self.user.show_summary()
+            elif choice == '4':
+                self.user.plot_expense_breakdown()
+            elif choice == '5':
+                self.user.generate_monthly_advice()
+            elif choice == '6':
+                self.user.set_budget_interactive()
+            elif choice == '7':
+                keyword = input("🔎 Enter category or keyword to search: ")
+                self.user.search_transactions(keyword)
+            elif choice == '8':
+                self.user.save_to_file()
+                print("\n💾 All data saved successfully.")
+                print("👋 Goodbye and keep tracking your expenses smartly!")
+                break
+            else:
+                print("❌ Invalid choice. Please enter a number from 1 to 8.")
+
+    def add_transaction(self, trans_type):
+        print(f"\n💸 Adding a new {trans_type.capitalize()}...")
+        try:
+            amount = float(input("➡️  Enter amount: "))
+            category = input("➡️  Enter category (e.g., Food, Rent, Transport): ").strip()
+            self.user.add_transaction(amount, category, trans_type)
+            print(f"✅ {trans_type.capitalize()} of ${amount:.2f} added under '{category.title()}'.")
+        except ValueError:
+            print("❌ Invalid amount. Please enter a number.")
 
 # --- CLI Interface ---
 
